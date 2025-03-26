@@ -69,5 +69,3 @@ function materiaMayorNota() {
     resultadoDiv.textContent = `Materia(s) con mayor nota: ${mejorMateria.join(', ')}`;
     resultadoDiv.style.color = 'blue';
 }
-
-
