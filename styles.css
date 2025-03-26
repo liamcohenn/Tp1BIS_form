@@ -1,69 +1,98 @@
-/* Estilos generales */
+/* Estilo general del cuerpo */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    flex-direction: column;
 }
 
 /* Estilo del formulario */
-form {
-    background: #fff;
+#formulario {
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     width: 300px;
 }
 
-/* Etiquetas */
+/* Estilo de las etiquetas */
 label {
-    font-weight: bold;
+    font-size: 16px;
     margin-bottom: 5px;
+    display: block;
+    color: #333;
 }
 
-/* Inputs */
-input {
+/* Estilo de los campos de entrada */
+input[type="text"] {
+    width: 100%;
     padding: 8px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: 0.3s;
 }
 
-input:focus {
-    border-color: #007bff;
+input[type="text"]:focus {
+    border-color: #4CAF50;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Botones */
+/* Estilo de los botones */
 button {
-    background: #007bff;
+    background-color: #4CAF50;
     color: white;
-    border: none;
     padding: 10px;
+    border: none;
     border-radius: 5px;
+    width: 100%;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #45a049;
 }
 
-/* Resultado */
+button:active {
+    background-color: #388e3c;
+}
+
+/* Estilo para el resultado */
 #resultado {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    text-align: center;
+}
+
+/* Color rojo para el mensaje de error */
+#resultado.red {
+    color: red;
+}
+
+/* Color verde para el promedio aprobado */
+#resultado.green {
+    color: green;
+}
+
+/* Color azul para la materia con mayor nota */
+#resultado.blue {
+    color: blue;
+}
+
+/* Estilo para los mensajes de error en los inputs */
+input[type="text"][style*="color: red"] {
+    border-color: red;
+}
+
+/* Estilo para los mensajes de éxito en los inputs */
+input[type="text"][style*="color: green"] {
+    border-color: green;
 }

@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Notas</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Formulario de notas</title>
 </head>
 <body>
-    
-        <form id="notas">
-            <h2>Registro de notas</h2>
-           
-            <label for="matematica">Nota de matematicas:</label>
-            <input type="text" id="notaMatematicas" onkeyup="validarNota(this)">
-           
-            <label for="lengua">Nota de lengua:</label>
-            <input type="text" id="notaLengua" onkeyup="validarNota(this)">
-           
-            <label for="efsi">Nota de EFSI:</label>
-            <input type="text" id="notaEfsi" onkeyup="validarNota(this)">
-           
-            <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
-            <button type="button" onclick="materiaMayorNota()">Mostrar Materia con Mayor Nota</button>
-        </form>
-    
-    <script src="js/script.js" defer></script>
+    <form id="formulario">
+        <label for="matematicas">Nota matemáticas:</label>
+        <input type="text" id="notaMatematicas" onkeyup="validacionNotas(this)">
+
+        <label for="lengua">Nota lengua:</label>
+        <input type="text" id="notaLengua" onkeyup="validacionNotas(this)">
+
+        <label for="efsi">Nota EFSI:</label>
+        <input type="text" id="notaEfsi" onkeyup="validacionNotas(this)">
+
+        <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
+        <button type="button" onclick="materiaMayorNota()">Mostrar Materia con Mayor Nota</button>
+    </form>
+    <script src="script.js"></script>
     <div id="resultado"></div>
 </body>
 </html>

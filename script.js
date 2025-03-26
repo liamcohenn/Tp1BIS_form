@@ -1,37 +1,58 @@
 const MAX = 10
 const MIN = 1
+const APROBADO = 6
 
-
-function validarNota(input) {
+function validacionNotas(input) {
     const nota = parseFloat(input.value);
-    if (nota < MIN || nota > MAX) {
+    if (nota < MIN || nota > MAX) 
+    {
         input.style.color = 'red';
-    } else {
+    } 
+    else 
+    {
         input.style.color = 'green';
     }
 }
+
+function obtenerNotas() {
+    const matematicas = parseFloat(document.getElementById('notaMatematicas').value);
+    const lengua = parseFloat(document.getElementById('notaLengua').value);
+    const efsi = parseFloat(document.getElementById('notaEfsi').value);
+    return [matematicas, lengua, efsi];
+}
+function validarCampos() {
+    const matematicas = parseFloat(document.getElementById('notaMatematicas').value);
+    const lengua = parseFloat(document.getElementById('notaLengua').value);
+    const efsi = parseFloat(document.getElementById('notaEfsi').value);
+    return matematicas != '' && lengua != '' && efsi != '';
+}
+
 function calcularPromedio() {
     const notas = obtenerNotas();
-    if (!camposCompletos()) {
-        alert('Por favor, complete todos los campos.');
+    if (!validarCampos()) 
+    {
+        alert('Complete los campos vacios');
         return;
     }
-    if (notas.some(nota => nota < 1 || nota > 10)) {
-        alert('Por favor, ingrese notas válidas entre 1 y 10.');
+    if (notas.some(nota => nota < MIN || nota > MAX)) 
+    {
+        alert(`Las notas ingresadas deberian ser entre ${MIN} y ${MAX} `);
         return;
     }
+
     const promedio = (notas[0] + notas[1] + notas[2]) / 3;
     const resultado = document.getElementById('resultado');
     resultado.textContent = `Promedio: ${promedio}`;
-    if (promedio >= 6) {
+    
+    if (promedio >= APROBADO) {
         resultado.style.color = 'green';
     } else {
         resultado.style.color = 'red';
     }
 }
-function mostrarMateriaMayorNota() {
+function materiaMayorNota() {
     const notas = obtenerNotas();
-    if (!camposCompletos()) {
+    if (!validarCampos()) {
         alert('Por favor, complete todos los campos.');
         return;
     }
@@ -39,23 +60,14 @@ function mostrarMateriaMayorNota() {
         alert('Por favor, ingrese notas válidas entre 1 y 10.');
         return;
     }
-    const materias = ['Matemática', 'Lengua', 'EFSI'];
+    const materias = ['matemáticas', 'lengua', 'efsi'];
     const maxNota = Math.max(...notas);
-    const materiasConMaxNota = materias.filter((materia, index) => notas[index] === maxNota);
+
+    const mejorMateria = materias.filter((materia, index) => notas[index] === maxNota);
     const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.textContent = `Materia(s) con mayor nota: ${materiasConMaxNota.join(', ')}`;
+
+    resultadoDiv.textContent = `Materia(s) con mayor nota: ${mejorMateria.join(', ')}`;
     resultadoDiv.style.color = 'blue';
 }
 
-function obtenerNotas() {
-    const matematica = parseFloat(document.getElementById('matematica').value);
-    const lengua = parseFloat(document.getElementById('lengua').value);
-    const efsi = parseFloat(document.getElementById('efsi').value);
-    return [matematica, lengua, efsi];
-}
-function camposCompletos() {
-    const matematica = document.getElementById('matematica').value;
-    const lengua = document.getElementById('lengua').value;
-    const efsi = document.getElementById('efsi').value;
-    return matematica != '' && lengua != '' && efsi != '';
-}
+
