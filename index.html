@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulario de notas</title>
+</head>
+<body>
+    <div class="container">
+        <form id="notas">
+            <h2>Registro de notas</h2>
+           
+            <label for="Nota1">Nota de matematicas:</label>
+            <input type="text" id="notaMatematicas">
+            <div class="MensajeError" id="ErrorMatematicas"></div>
+           
+            <label for="Nota2">Nota de lengua:</label>
+            <input type="text" id="notaLengua">
+           
+            <label for="Nota3">Nota de EFSI:</label>
+            <input type="text" id="notaEfsi">
+           
+            <button type="submit" id="promedio">Calcular promedio del alumno</button>
+            <button type="submit" id="mayorNota">Materia con mejor nota</button>
+        </form>
+    </div>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
