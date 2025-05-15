@@ -21,17 +21,21 @@ function obtenerNotas() {
     return [matematicas, lengua, efsi];
 }
 function validarCampos() {
-    const matematicas = parseFloat(document.getElementById('notaMatematicas').value);
-    const lengua = parseFloat(document.getElementById('notaLengua').value);
-    const efsi = parseFloat(document.getElementById('notaEfsi').value);
-    return matematicas != '' && lengua != '' && efsi != '';
+    const matematicas = document.getElementById('notaMatematicas').value;
+    const lengua = document.getElementById('notaLengua').value;
+    const efsi = document.getElementById('notaEfsi').value;
+
+    if (matematicas === '' || lengua === '' || efsi === '') {
+        alert('Complete los campos vacíos');
+        return false;
+    }
+
+    return true;
 }
 
 function calcularPromedio() {
     const notas = obtenerNotas();
-    if (!validarCampos()) 
-    {
-        alert('Complete los campos vacios');
+    if (!validarCampos()) {
         return;
     }
     if (notas.some(nota => nota < MIN || nota > MAX)) 
@@ -53,7 +57,6 @@ function calcularPromedio() {
 function materiaMayorNota() {
     const notas = obtenerNotas();
     if (!validarCampos()) {
-        alert('Por favor, complete todos los campos.');
         return;
     }
     if (notas.some(nota => nota < 1 || nota > 10)) {
